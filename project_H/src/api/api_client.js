@@ -48,7 +48,7 @@ export async function fetchProjectInformation(userId) {
 
 export async function fetchSkillsInformation(userId) {
     const { data } = await supabase
-        .from('projects')
+        .from('skills')
         .select('*')
         .eq('user_id', userId)
 

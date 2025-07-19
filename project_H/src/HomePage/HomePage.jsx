@@ -9,13 +9,16 @@ import {
     fetchSkillsInformation,
     fetchWorkExperienceInformation,
 } from "../api/api_client.js";
+
+import Friends from "../Friends/Friends.jsx";
+import Project from "../Project/project.jsx";
 import {AboutUs} from "../AboutUs/AboutUs.jsx";
 import {Achievements} from "../Achievement/Achievement.jsx";
 import {CertsAndLicsenses} from "../CertsAndLicsenses/CertsAndLicsenses.jsx";
 import {Education} from "../Education/Education.jsx";
-import {Project} from "../Project/project.jsx";
 import Skills from "../Skills/skills.jsx";
-import Friends from "../Friends/Friends.jsx";
+
+
 
 export default function HomePage() {
     const [userId, setUserId] = useState(null);
@@ -65,7 +68,6 @@ export default function HomePage() {
 
                 // pick out the single description
                 setAboutMe(aboutRows?.[0]?.description ?? "");
-
                 setCerts(certRows || []);
                 setEducation(eduRows || []);
                 setAchievement(endorseRows || []);
@@ -86,9 +88,9 @@ export default function HomePage() {
             {/*<Achievements data={achievement} />*/}
             {/*<CertsAndLicsenses data={certs} />*/}
             {/*<Education data={education} />*/}
-            {/*<Project data={projects} />*/}
+            <Project data={projects} />
             {/*<Skills data={skills} />*/}
-            <Friends />
+            {/*<Friends />*/}
         </div>
     );
 }
