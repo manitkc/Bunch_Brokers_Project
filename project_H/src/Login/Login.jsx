@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js'
 import './Login.css'; 
 import { useNavigate } from 'react-router-dom';
-
-const supabaseUrl = 'https://rqfparzhamjouldtggjf.supabase.co'
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+import supabase from "../SupabaseClient.js";
 
 
 export default function Login() {
     const [form, setForm] = useState({ username: '', password: '' });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,6 +21,7 @@ export default function Login() {
         }).then(({ data, error }) => {console.log(data, error) })
         
         console.log('Login submitted:', form);
+        navigate('/HomePage');
     };
 
     return (
