@@ -89,7 +89,7 @@ export default function HomePage() {
             {/*<CertsAndLicsenses data={certs} />*/}
             {/*<Education data={education} />*/}
             <Project data={projects} />
-            {/*<Skills data={skills} />*/}
+            <Skills data={skills} />
             {/*<Friends />*/}
         </div>
     );
