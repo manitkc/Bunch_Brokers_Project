@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import supabase from "../SupabaseClient.js";
 import {
     fetchAboutUsInformation,
+    fetchAchievementsInformatin,
     fetchCertsInformation,
     fetchEducationInformation,
     fetchEndorsementInformation,
@@ -13,9 +14,9 @@ import {AboutUs} from "../AboutUs/AboutUs.jsx";
 import {Achievements} from "../Achievement/Achievement.jsx";
 import {CertsAndLicsenses} from "../CertsAndLicsenses/CertsAndLicsenses.jsx";
 import {Education} from "../Education/Education.jsx";
-import Project from "../Project/project.jsx";
+import {Project} from "../Project/project.jsx";
 import Skills from "../Skills/skills.jsx";
-import { Experience } from "../WorkExperience/workExperience.jsx"; 
+import Endorsements from "../Endorsement/Endorsement.jsx";
 
 export default function HomePage() {
     const [userId, setUserId] = useState(null);
@@ -27,6 +28,7 @@ export default function HomePage() {
     const [projects, setProjects] = useState([]);
     const [skills, setSkills] = useState([]);
     const [experience, setExperience] = useState([]);
+    const [endorsement, setEndorsement] = useState([])
 
     // 1) grab the logged-in user once
     useEffect(() => {
@@ -49,6 +51,7 @@ export default function HomePage() {
                     aboutRows,
                     certRows,
                     eduRows,
+                    // achievements,
                     endorseRows,
                     projRows,
                     skillRows,
@@ -57,6 +60,7 @@ export default function HomePage() {
                     fetchAboutUsInformation(userId),       // returns [{ description }]
                     fetchCertsInformation(userId),         // returns array of cert rows
                     fetchEducationInformation(userId),     // array of education rows
+                    // fetchAchievementsInformation(userId),
                     fetchEndorsementInformation(userId),   // array of endorsements
                     fetchProjectInformation(userId),       // array of projects
                     fetchSkillsInformation(userId),        // array of skills
@@ -68,10 +72,12 @@ export default function HomePage() {
 
                 setCerts(certRows || []);
                 setEducation(eduRows || []);
-                setAchievement(endorseRows || []);
+  //              setAchievement(achievements || []);
+                setEndorsement(endorseRows || []);
                 setProjects(projRows || []);
                 setSkills(skillRows || []);
                 setExperience(expRows || []);
+                console.log(endorsement);
             } catch (e) {
                 console.error("Error loading profile data:", e);
             }
@@ -82,13 +88,14 @@ export default function HomePage() {
 
     return (
         <div>
-            {/*<AboutUs data={aboutMe} />*/}
+            {/* <AboutUs data={aboutMe} />
             <Achievements data={achievement} />
-            {/*<CertsAndLicsenses data={certs} />*/}
-            {/*<Education data={education} />*/}
-            <Project data={projects} />
+            <CertsAndLicsenses data={certs} /> */}
+            {/* <Education data={education} /> */}
+            <Endorsements data={endorsement} />
+            {/* <Project data={projects} />
             <Skills data={skills} />
-            {/*<Experience data={experience} />*/}
+            <Experence date={experience} /> */}
 
         </div>
     );

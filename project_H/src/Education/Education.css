@@ -1,0 +1,98 @@
+/* Education Component Styles - Retro/Pixel Theme */
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    #d1e8b5,
+    #d1e8b5 10px,
+    #b7d89c 10px,
+    #b7d89c 20px
+  );
+
+
+
+.educations_total {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 16px;
+  background: rgba(229, 244, 204, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.individual_education {
+  background: rgba(243, 252, 226, 0.15);
+  backdrop-filter: blur(4px);
+  border: 3px solid #486d29;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.individual_education:last-child {
+  margin-bottom: 0;
+}
+
+.school_name {
+  color: #2e4d1c;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.degree_name {
+  color: #2e4d1c;
+  font-size: 10px;
+  margin: 0 0 6px 0;
+  font-style: normal;
+}
+
+.dates {
+  color: #486d29;
+  font-size: 8px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.individual_education p {
+  color: #000;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .educations_total {
+    padding: 12px;
+    width: 95%;
+  }
+  
+  .individual_education {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .school_name {
+    font-size: 10px;
+  }
+  
+  .degree_name {
+    font-size: 9px;
+  }
+  
+  .dates {
+    font-size: 7px;
+  }
+  
+  .individual_education p {
+    font-size: 9px;
+  }
+}
+}
