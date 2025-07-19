@@ -1,7 +1,6 @@
 import './CertsAndLicsenses.css'
 
 
-
 export function CertsAndLicsenses({ certsData }) {
   return (
     <div className=" cert_total">
