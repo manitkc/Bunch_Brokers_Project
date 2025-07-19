@@ -1,17 +1,17 @@
-import './Education.css'
+import './skills.css';
 
-
-export function Education({ educationData }) {
-    return (
-        <div className="educations_total">
-            {educationData.map((education, index) => (
-                <div key={index} className="individual_education">
-                    <h2 className="school_name">{education.school_name}</h2>
-                    <h4 className="degree_name">{education.degree_name}</h4>
-                    <h4 className="dates">{education.start_date} - {education.end_date}</h4>
-                    <p>{education.description}</p>
-                </div>
-            ))}
+export default function Skills({ skillsData }) {
+  
+  return (
+    <div className="skills_total">
+      <h2 className="skills_title">My skills:</h2>
+      {skillsData.map((skill, index) => ( 
+        <div key={index} className="individual_skills">
+          <h3 className="skill_name">{skill.degree_name}</h3>
+          <h4 className="skill_level">{skill.start_date} - {skill.end_date}</h4>
+          <p>{skill.description}</p>
         </div>
-    )
+      ))}
+    </div>
+  );
 }
