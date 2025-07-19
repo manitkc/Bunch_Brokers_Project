@@ -1,9 +1,6 @@
-// Skills.jsx
 import './skills.css';
 
 export default function Skills({ skillsData }) {
-  console.log('Skills component rendering');
-  console.log('Received skillsData:', skillsData);
   
   return (
     <div className="skills_total">
