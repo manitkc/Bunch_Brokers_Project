@@ -87,8 +87,6 @@ export default function HomePage() {
             <Education data={education} />
             <Project data={projects} />
             <Skills data={skills} />
-            <Exper
-
         </div>
     );
 }
