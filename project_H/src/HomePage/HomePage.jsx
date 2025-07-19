@@ -81,13 +81,13 @@ export default function HomePage() {
 
     return (
         <div>
-            <AboutUs data={aboutMe} />
+            {/* <AboutUs data={aboutMe} />
             <Achievements data={achievement} />
-            <CertsAndLicsenses data={certs} />
+            <CertsAndLicsenses data={certs} /> */}
             <Education data={education} />
-            <Project data={projects} />
+            {/* <Project data={projects} />
             <Skills data={skills} />
-            <Exper
+            <Experence date={experience} /> */}
 
         </div>
     );
