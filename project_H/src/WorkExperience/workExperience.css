@@ -1,0 +1,98 @@
+.workExperience_total {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 16px;
+    background: rgba(229, 244, 204, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Press Start 2P', monospace;
+}
+
+.individual_experience {
+    background: rgba(243, 252, 226, 0.15);
+    backdrop-filter: blur(4px);
+    border: 3px solid #486d29;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.company_name {
+    color: #2e4d1c;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+}
+
+.individual_experience h4.description {
+    color: #a2352d; / Using the red from your buttons /
+font-size: 10px;
+    margin: 0 0 6px 0;
+    font-style: italic;
+}
+
+.time {
+    color: #486d29;
+    font-size: 8px;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.individual_experience p {
+    color: #000;
+    font-size: 10px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+@media (max-width: 768px) {
+    .workExperience_total {
+        padding: 12px;
+        width: 95%;
+    }
+
+    .individual_experience {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .company_name {
+        font-size: 11px;
+    }
+
+    .individual_experience h4.description {
+        font-size: 9px;
+    }
+
+    .time {
+        font-size: 7px;
+    }
+
+    .individual_experience p {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .company_name {
+        font-size: 10px;
+    }
+
+    .individual_experience h4.description {
+        font-size: 8px;
+    }
+
+    .time {
+        font-size: 6px;
+    }
+
+    .individual_experience p {
+        font-size: 8px;
+    }
+}
