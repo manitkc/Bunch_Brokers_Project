@@ -9,6 +9,12 @@ import {
     fetchSkillsInformation,
     fetchWorkExperienceInformation,
 } from "../api/api_client.js";
+import {AboutUs} from "../AboutUs/AboutUs.jsx";
+import {Achievements} from "../Achievement/Achievement.jsx";
+import {CertsAndLicsenses} from "../CertsAndLicsenses/CertsAndLicsenses.jsx";
+import {Education} from "../Education/Education.jsx";
+import {Project} from "../Project/project.jsx";
+import Skills from "../Skills/skills.jsx";
 
 export default function HomePage() {
     const [userId, setUserId] = useState(null);
@@ -75,7 +81,14 @@ export default function HomePage() {
 
     return (
         <div>
-            <h1>Homepage</h1>
+            <AboutUs data={aboutMe} />
+            <Achievements data={achievement} />
+            <CertsAndLicsenses data={certs} />
+            <Education data={education} />
+            <Project data={projects} />
+            <Skills data={skills} />
+            <Exper
+
         </div>
     );
 }
