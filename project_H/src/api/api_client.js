@@ -10,6 +10,13 @@ export async function fetchAboutUsInformation(userId) {
     return data;
 }
 
+export async function fetchAchievementsInformatin(userId) {
+    const {data} = await supabase
+        .from('achievements')
+        .select('*')
+          .eq('user_id', userId)
+}
+
 export async function fetchCertsInformation(userId) {
     const { data } = await supabase
         .from('licenses_certs')
@@ -36,6 +43,8 @@ export async function fetchEndorsementInformation(userId) {
 
     return data;
 }
+
+
 
 export async function fetchProjectInformation(userId) {
     const { data } = await supabase
