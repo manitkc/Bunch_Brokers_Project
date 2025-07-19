@@ -1,5 +1,17 @@
-// HomePage.jsx
 import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+    Briefcase, 
+    GraduationCap, 
+    Code2, 
+    Award, 
+    Heart, 
+    Star, 
+    X, 
+    Edit3,
+    ArrowLeft,
+    Sparkles
+} from "lucide-react";
 import supabase from "../SupabaseClient.js";
 import {
     fetchAboutUsInformation,
@@ -14,11 +26,19 @@ import { AboutUs } from "../AboutUs/AboutUs.jsx";
 import { Achievements } from "../Achievement/Achievement.jsx";
 import { CertsAndLicsenses } from "../CertsAndLicsenses/CertsAndLicsenses.jsx";
 import { Education } from "../Education/Education.jsx";
-import { Project } from "../Project/project.jsx";
+import Project from "../Project/project.jsx";
 import Skills from "../Skills/skills.jsx";
 
 import "./HomePage.css";
 
+const sections = [
+    { id: 'skills', title: 'Skills', icon: Code2, color: 'from-green-600 to-green-400' },
+    { id: 'experience', title: 'Experience', icon: Briefcase, color: 'from-emerald-600 to-emerald-400' },
+    { id: 'projects', title: 'Projects', icon: Sparkles, color: 'from-lime-600 to-lime-400' },
+    { id: 'education', title: 'Education', icon: GraduationCap, color: 'from-teal-600 to-teal-400' },
+    { id: 'values', title: 'About Me', icon: Heart, color: 'from-green-700 to-green-500' },
+    { id: 'endorsements', title: 'Achievements', icon: Award, color: 'from-emerald-700 to-emerald-500' },
+];
 export default function HomePage() {
     const [userId, setUserId] = useState(null);
     const [aboutMe, setAboutMe] = useState("");
@@ -29,15 +49,16 @@ export default function HomePage() {
     const [skills, setSkills] = useState([]);
     const [experience, setExperience] = useState([]);
     const [popup, setPopup] = useState(null);
-    const [lines, setLines] = useState([]);
+    const [hoveredSection, setHoveredSection] = useState(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-    const skillsRef = useRef();
-    const experienceRef = useRef();
-    const projectsRef = useRef();
-    const educationRef = useRef();
-    const valuesRef = useRef();
-    const endorsementsRef = useRef();
-    const spriteRef = useRef();
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            setMousePosition({ x: e.clientX, y: e.clientY });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data: { user }, error }) => {
@@ -73,58 +94,6 @@ export default function HomePage() {
         loadAll();
     }, [userId]);
 
-    useEffect(() => {
-        const updateLines = () => {
-            const boxes = [skillsRef, experienceRef, projectsRef, educationRef, valuesRef, endorsementsRef];
-            const spriteBox = spriteRef.current?.getBoundingClientRect();
-            if (!spriteBox) return;
-            const spriteCenter = {
-                x: spriteBox.left + spriteBox.width / 2,
-                y: spriteBox.top + spriteBox.height / 2,
-            };
-            const newLines = boxes.map((ref) => {
-                const box = ref.current?.getBoundingClientRect();
-                if (!box) return null;
-
-                let startX, startY;
-
-                if (ref === skillsRef) {
-                    startX = box.right;
-                    startY = box.bottom;
-                } else if (ref === experienceRef) {
-                    startX = box.left;
-                    startY = box.bottom;
-                } else {
-                    const dx = spriteCenter.x - (box.left + box.width / 2);
-                    const dy = spriteCenter.y - (box.top + box.height / 2);
-                    if (Math.abs(dx) > Math.abs(dy)) {
-                        startX = dx > 0 ? box.right : box.left;
-                        startY = box.top + box.height / 2;
-                    } else {
-                        startX = box.left + box.width / 2;
-                        startY = dy > 0 ? box.bottom : box.top;
-                    }
-                }
-
-                return {
-                    x1: startX,
-                    y1: startY,
-                    x2: spriteCenter.x,
-                    y2: spriteCenter.y,
-                };
-            }).filter(Boolean);
-            setLines(newLines);
-        };
-
-        updateLines();
-        window.addEventListener("resize", updateLines);
-        window.addEventListener("scroll", updateLines);
-        return () => {
-            window.removeEventListener("resize", updateLines);
-            window.removeEventListener("scroll", updateLines);
-        };
-    }, []);
-
     const popupContent = {
         skills: <Skills data={skills} />,
         projects: <Project data={projects} />,
@@ -132,12 +101,19 @@ export default function HomePage() {
         endorsements: <Achievements data={achievement} />,
         values: <AboutUs data={aboutMe} />,
         experience: (
-            <div>
+            <div className="space-y-6">
                 {experience.map((exp, i) => (
-                    <div key={i}>
-                        <p>{exp.role} at {exp.company}</p>
-                        <p>{exp.description}</p>
-                    </div>
+                    <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="experience-item"
+                    >
+                        <h3 className="text-lg font-bold text-gray-800">{exp.role}</h3>
+                        <p className="text-sm text-gray-600 mb-2">{exp.company}</p>
+                        <p className="text-gray-700">{exp.description}</p>
+                    </motion.div>
                 ))}
             </div>
         ),
@@ -145,41 +121,156 @@ export default function HomePage() {
 
     return (
         <div className="home-container">
-            <div ref={skillsRef} className="box skills" onClick={() => setPopup("skills")}>Skills</div>
-            <div ref={experienceRef} className="box experience" onClick={() => setPopup("experience")}>Experience</div>
-            <div ref={projectsRef} className="box projects" onClick={() => setPopup("projects")}>Projects</div>
-            <div ref={educationRef} className="box education" onClick={() => setPopup("education")}>Education</div>
-            <div ref={valuesRef} className="box values" onClick={() => setPopup("values")}>Values</div>
-            <div ref={endorsementsRef} className="box endorsements" onClick={() => setPopup("endorsements")}>Endorsements</div>
+            {/* Animated background */}
+            <div className="animated-bg" />
+            
+            {/* Mouse follower */}
+            <div 
+                className="mouse-follower"
+                style={{
+                    transform: `translate(${mousePosition.x - 200}px, ${mousePosition.y - 200}px)`
+                }}
+            />
 
-            <svg className="connect-svg">
-                {lines.map((line, i) => (
-                    <line
-                        key={i}
-                        x1={line.x1}
-                        y1={line.y1}
-                        x2={line.x2}
-                        y2={line.y2}
-                        className="line"
-                    />
-                ))}
-            </svg>
+            {/* Header */}
+            <motion.div 
+                className="header"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+            >
+                <h1 className="portfolio-title">My Portfolio</h1>
+                <p className="portfolio-subtitle">Explore my professional journey</p>
+            </motion.div>
 
-            <div className="sprite-container">
-                <img ref={spriteRef} src="/sprite.png" alt="Character" className="sprite" />
+            {/* Center profile */}
+            <motion.div 
+                className="center-profile"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+            >
+                <div className="profile-image-container">
+                    <img src="/sprite.png" alt="Profile" className="profile-image" />
+                    <div className="profile-ring" />
+                    <div className="profile-ring ring-2" />
+                </div>
+            </motion.div>
+
+            {/* Section cards */}
+            <div className="sections-container">
+                {sections.map((section, index) => {
+                    const Icon = section.icon;
+                    const angle = (index * 60) - 30;
+                    const radius = 280;
+                    const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
+                    const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
+                    
+                    return (
+                        <motion.div
+                            key={section.id}
+                            className={`section-card ${hoveredSection === section.id ? 'hovered' : ''}`}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ 
+                                opacity: 1, 
+                                scale: 1,
+                                x: x,
+                                y: y
+                            }}
+                            transition={{ 
+                                duration: 0.5, 
+                                delay: index * 0.1,
+                                type: "spring",
+                                stiffness: 100
+                            }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setPopup(section.id)}
+                            onMouseEnter={() => setHoveredSection(section.id)}
+                            onMouseLeave={() => setHoveredSection(null)}
+                        >
+                            <div className={`gradient-bg bg-gradient-to-br ${section.color}`} />
+                            <Icon className="section-icon" size={32} />
+                            <h3 className="section-title">{section.title}</h3>
+                            
+                            {hoveredSection === section.id && (
+                                <motion.div 
+                                    className="connection-line"
+                                    layoutId="connection"
+                                />
+                            )}
+                        </motion.div>
+                    );
+                })}
             </div>
 
-            <button className="pixel-button back">BACK</button>
-            <button className="pixel-button edit">EDIT</button>
+            {/* Navigation buttons */}
+            <motion.button 
+                className="nav-button back-button"
+                initial={{ x: -100 }}
+                animate={{ x: 0 }}
+                whileHover={{ x: -5 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <ArrowLeft size={20} />
+                <span>Back</span>
+            </motion.button>
 
-            {popup && (
-                <div className="popup-overlay" onClick={() => setPopup(null)}>
-                    <div className="popup-box" onClick={(e) => e.stopPropagation()}>
-                        {popupContent[popup]}
-                        <button className="pixel-button close" onClick={() => setPopup(null)}>CLOSE</button>
-                    </div>
-                </div>
-            )}
+            <motion.button 
+                className="nav-button edit-button"
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <span>Edit Profile</span>
+                <Edit3 size={20} />
+            </motion.button>
+
+            {/* Modal */}
+            <AnimatePresence>
+                {popup && (
+                    <motion.div 
+                        className="modal-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setPopup(null)}
+                    >
+                        <motion.div 
+                            className="modal-content"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button 
+                                className="modal-close"
+                                onClick={() => setPopup(null)}
+                            >
+                                <X size={24} />
+                            </button>
+                            
+                                                   <div className="modal-header">
+                                {(() => {
+                                    const section = sections.find(s => s.id === popup);
+                                    const Icon = section?.icon;
+                                    return (
+                                        <>
+                                            {Icon && <Icon size={28} />}
+                                            <h2>{section?.title}</h2>
+                                        </>
+                                    );
+                                })()}
+                            </div>
+                            
+                            <div className="modal-body">
+                                {popupContent[popup]}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
