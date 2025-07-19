@@ -1,33 +1,26 @@
-import './Achievement.css'
+import './Achievement.css';
 
-const achievements = [{
-    name: "a1",
-    description: "very easy",
-    time: "2021"
-},
-{
-    name: "a2",
-    description:"very hard",
-    time: "2020"
-}, 
-{
-    name: "a3",
-    description:"easy",
-    time: "2022"
-}]
-
-export function Achievements() {
+export function Achievements({ data }) {
     return (
-        <div className="achievement-container">
-            <h1 className="title"> Achievements </h1>
-            {achievements.map((achievement, index) => (
-             <div key={index} className = "achievementEl">
-                <p>{achievement.name} - {achievement.time}</p>
-                <div>
-                    <p>{achievement.description}</p>
-                </div>
+        <div className="achievements-page">
+            <h2 className="achievements-title">ACHIEVEMENTS UNLOCKED</h2>
+            <div className="achievements-list">
+                {data.map((achievement, index) => (
+                    <div key={index} className="achievement-card">
+                        <div className="achievement-header">
+                            <div className="achievement-titles">
+                                <h3 className="achievement-title">{achievement.title}</h3>
+                            </div>
+                        </div>
+                        <div className="achievement-content">
+                            <p className="achievement-name">{achievement.name}</p>
+                            <p className="achievement-time">{achievement.time}</p>
+                            <p className="achievement-description">{achievement.description}</p>
+                        </div>
+                        <div className="achievement-badge">★</div>
+                    </div>
+                ))}
             </div>
-            ))}
         </div>
-    )
+    );
 }

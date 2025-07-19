@@ -19,6 +19,16 @@ export async function fetchCertsInformation(userId) {
     return data;
 }
 
+export async function fetchAchievementsInformation(userId) {
+    const { data } = await supabase
+        .from('achievements')
+        .select('*')
+        .eq('user_id', userId)
+
+    return data;
+    
+}
+
 export async function fetchEducationInformation(userId) {
     const { data } = await supabase
         .from('education')
