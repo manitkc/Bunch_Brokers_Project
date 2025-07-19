@@ -8,6 +8,7 @@ import {
     fetchProjectInformation,
     fetchSkillsInformation,
     fetchWorkExperienceInformation,
+    fetchAchievementsInformation,
 } from "../api/api_client.js";
 import {AboutUs} from "../AboutUs/AboutUs.jsx";
 import {Achievements} from "../Achievement/Achievement.jsx";
@@ -53,6 +54,7 @@ export default function HomePage() {
                     projRows,
                     skillRows,
                     expRows,
+                    achievementRows,
                 ] = await Promise.all([
                     fetchAboutUsInformation(userId),       // returns [{ description }]
                     fetchCertsInformation(userId),         // returns array of cert rows
@@ -61,6 +63,7 @@ export default function HomePage() {
                     fetchProjectInformation(userId),       // array of projects
                     fetchSkillsInformation(userId),        // array of skills
                     fetchWorkExperienceInformation(userId),// array of experiences
+                    fetchAchievementsInformation(userId), // array of achievements
                 ]);
 
                 // pick out the single description
@@ -68,7 +71,7 @@ export default function HomePage() {
 
                 setCerts(certRows || []);
                 setEducation(eduRows || []);
-                setAchievement(endorseRows || []);
+                setAchievement(achievementRows || []);
                 setProjects(projRows || []);
                 setSkills(skillRows || []);
                 setExperience(expRows || []);
@@ -82,11 +85,11 @@ export default function HomePage() {
 
     return (
         <div>
-            {/* <AboutUs data={aboutMe} />
+            {/* <AboutUs data={aboutMe} /> */}
             <Achievements data={achievement} />
-            <CertsAndLicsenses data={certs} />
-            <Education data={education} /> */}
-            <Project data={projects} />
+            {/* <CertsAndLicsenses data={certs} /> */}
+            {/* <Education data={education} /> */}
+            {/* <Project data={projects} /> */}
             {/* <Skills data={skills} />
             <Experience data={experience} /> */}
 
