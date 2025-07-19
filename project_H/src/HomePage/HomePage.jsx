@@ -13,7 +13,7 @@ import {AboutUs} from "../AboutUs/AboutUs.jsx";
 import {Achievements} from "../Achievement/Achievement.jsx";
 import {CertsAndLicsenses} from "../CertsAndLicsenses/CertsAndLicsenses.jsx";
 import {Education} from "../Education/Education.jsx";
-import {Project} from "../Project/project.jsx";
+import Project from "../Project/project.jsx";
 import Skills from "../Skills/skills.jsx";
 import { Experience } from "../WorkExperience/workExperience.jsx"; 
 
@@ -85,10 +85,10 @@ export default function HomePage() {
             {/* <AboutUs data={aboutMe} />
             <Achievements data={achievement} />
             <CertsAndLicsenses data={certs} />
-            <Education data={education} />
-            <Project data={projects} /> */}
-            <Skills data={skills} />
-            {/* <Experience data={experience} /> */}
+            <Education data={education} /> */}
+            <Project data={projects} />
+            {/* <Skills data={skills} />
+            <Experience data={experience} /> */}
 
         </div>
     );
