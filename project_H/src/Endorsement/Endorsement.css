@@ -1,115 +1,111 @@
+/* Endorsements Component - Retro/Pixel Theme */
+
 .endorsements_container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2.5rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 16px;
+  background: rgba(229, 244, 204, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Press Start 2P', monospace;
 }
 
 .endorsements_heading {
-    text-align: center;
-    color: #2c3e50;
-    font-size: 2.75rem;
-    margin-bottom: 3rem;
-    font-weight: 700;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.endorsements_heading::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, #3498db, #9b59b6);
-    border-radius: 2px;
+  text-align: center;
+  color: #2e4d1c;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #486d29;
+  position: relative;
 }
 
 .endorsement_card {
-    background-color: #f8fafc;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border-radius: 10px;
-    border-left: 5px solid #3498db;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.endorsement_card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+  background: rgba(243, 252, 226, 0.15);
+  backdrop-filter: blur(4px);
+  border: 3px solid #486d29;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: left;
 }
 
 .endorser_name {
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin: 0 0 0.75rem 0;
-    font-weight: 600;
+  color: #2e4d1c;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
 }
 
 .endorsed_skills {
-    color: #3498db;
-    font-size: 1.1rem;
-    margin: 0 0 1.25rem 0;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  color: #486d29;
+  font-size: 10px;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .endorsed_skills::before {
-    content: '★';
-    color: #f1c40f;
-    font-size: 1.2rem;
+  content: '★';
+  color: #a2352d; /* Changed to match the red from your buttons */
+  font-size: 10px;
 }
 
 .endorsement_text {
-    color: #4a5568;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0;
+  color: #000;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .endorsements_container {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .endorsements_heading {
-        font-size: 2.25rem;
-        margin-bottom: 2rem;
-    }
-    
-    .endorsement_card {
-        padding: 1.5rem;
-    }
-    
-    .endorser_name {
-        font-size: 1.3rem;
-    }
-    
-    .endorsed_skills {
-        font-size: 1rem;
-    }
+  .endorsements_container {
+    padding: 12px;
+    width: 95%;
+  }
+  
+  .endorsements_heading {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .endorsement_card {
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .endorser_name {
+    font-size: 11px;
+  }
+  
+  .endorsed_skills {
+    font-size: 9px;
+  }
+  
+  .endorsement_text {
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 480px) {
-    .endorsements_heading {
-        font-size: 2rem;
-    }
-    
-    .endorsement_card {
-        padding: 1.25rem;
-    }
-    
-    .endorser_name {
-        font-size: 1.25rem;
-    }
+  .endorsements_heading {
+    font-size: 12px;
+  }
+  
+  .endorser_name {
+    font-size: 10px;
+  }
+  
+  .endorsed_skills {
+    font-size: 8px;
+  }
+  
+  .endorsement_text {
+    font-size: 8px;
+  }
 }

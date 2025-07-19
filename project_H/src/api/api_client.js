@@ -37,9 +37,10 @@ export async function fetchEducationInformation(userId) {
 
 export async function fetchEndorsementInformation(userId) {
     const { data } = await supabase
-        .from('endorsement')
-        .select('*')
-        .eq('user_id', userId)
+        .from('endorsements')
+        .select(`id, created_at, endorser_id, endorsed_id, skills_id, description, profiles:endorser_id (first_name, last_name)`)
+       // .select('*')
+        .eq('endorsed_id', userId)
 
     return data;
 }

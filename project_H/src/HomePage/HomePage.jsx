@@ -51,7 +51,7 @@ export default function HomePage() {
                     aboutRows,
                     certRows,
                     eduRows,
-                    achievements,
+                    // achievements,
                     endorseRows,
                     projRows,
                     skillRows,
@@ -60,7 +60,7 @@ export default function HomePage() {
                     fetchAboutUsInformation(userId),       // returns [{ description }]
                     fetchCertsInformation(userId),         // returns array of cert rows
                     fetchEducationInformation(userId),     // array of education rows
-                    fetchAchievementsInformation(userId),
+                    // fetchAchievementsInformation(userId),
                     fetchEndorsementInformation(userId),   // array of endorsements
                     fetchProjectInformation(userId),       // array of projects
                     fetchSkillsInformation(userId),        // array of skills
@@ -72,11 +72,12 @@ export default function HomePage() {
 
                 setCerts(certRows || []);
                 setEducation(eduRows || []);
-                setAchievement(achievements || []);
+  //              setAchievement(achievements || []);
                 setEndorsement(endorseRows || []);
                 setProjects(projRows || []);
                 setSkills(skillRows || []);
                 setExperience(expRows || []);
+                console.log(endorsement);
             } catch (e) {
                 console.error("Error loading profile data:", e);
             }
@@ -90,7 +91,7 @@ export default function HomePage() {
             {/* <AboutUs data={aboutMe} />
             <Achievements data={achievement} />
             <CertsAndLicsenses data={certs} /> */}
-            <Education data={education} />
+            {/* <Education data={education} /> */}
             <Endorsements data={endorsement} />
             {/* <Project data={projects} />
             <Skills data={skills} />
