@@ -1,0 +1,19 @@
+.about-container {
+    padding: 20px;
+    text-align: left;        /* Left align all text inside */
+    max-width: 600px;
+    margin: 20px auto 0 auto; /* This centers the container itself */
+}
+
+.title {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 0;
+    text-align: left;        /* Explicitly left align title */
+}
+
+.description {
+    font-size: 1rem;
+    color: #666;
+    text-align: left;        /* Explicitly left align description */
+}
