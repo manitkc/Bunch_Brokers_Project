@@ -163,9 +163,18 @@ export default function HomePage() {
                 transition={{ duration: 0.6 }}
             >
                 <h1 className="portfolio-title">My Portfolio</h1>
-                <p className="portfolio-subtitle">Explore my professional journey</p>
             </motion.div>
-
+                <motion.button 
+                className="friends-button"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = '/friends'}
+            >
+                <span>Friends</span>
+            </motion.button>
             {/* Center profile */}
             <motion.div 
                 className="center-profile"
@@ -185,9 +194,9 @@ export default function HomePage() {
                 {sections.map((section, index) => {
                     const Icon = section.icon;
                     const angle = (index * 60) - 30;
-                    const radius = 280;
+                    const radius = 200;
                     const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
-                    const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
+                    const y = Math.sin((angle - 90) * Math.PI / 180) * radius ;
                     
                     return (
                         <motion.div
