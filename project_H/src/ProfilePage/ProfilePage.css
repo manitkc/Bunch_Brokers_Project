@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    #d1e8b5,
+    #d1e8b5 10px,
+    #b7d89c 10px,
+    #b7d89c 20px
+  );
+  font-family: 'Press Start 2P', monospace;
+  margin: 0;
+  padding: 0;
+  color: #2e4d1c;
+}
+
+.profile-window {
+  width: 460px;
+  margin: 50px auto;
+  background: #e5f4cc;
+  border: 4px solid #486d29;
+  box-shadow: 0 0 0 4px #486d29;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #c4e39c;
+  padding: 12px;
+}
+
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  background: #a1c97c;
+  border: 2px solid #486d29;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.user-id {
+  font-size: 10px;
+  color: #2e4d1c;
+}
+
+.job-title {
+  font-size: 8px;
+  color: #5e7f4e;
+  margin-top: 4px;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-stats {
+  background: #f3fce2;
+  padding: 16px;
+  font-size: 8px;
+  color: #2e4d1c;
+  border-top: 3px solid #486d29;
+  border-bottom: 3px solid #486d29;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.delete-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 16px;
+}
+
+.pixel-button {
+  background-color: #486d29;
+  color: white;
+  border: 2px solid #2e4d1c;
+  font-size: 8px;
+  padding: 6px 12px;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 2px 2px #000;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pixel-button:hover {
+  transform: translateY(1px);
+}
+
+.delete-button {
+  background-color: #a2352d;
+  border-color: #6a1f1a;
+}
+.profile-window {
+  width: 460px;
+  margin: 50px auto;
+  padding: 16px;
+  background: rgba(229, 244, 204, 0.2); /* green-tinted glass */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.profile-top {
+  background: rgba(196, 227, 156, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: 12px 12px 0 0;
+}
+
+.profile-stats {
+  background: rgba(243, 252, 226, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: 0 0 12px 12px;
+}
