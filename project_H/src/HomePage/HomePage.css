@@ -29,10 +29,10 @@ html, body {
 .animated-bg {
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(113, 198, 113, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(144, 238, 144, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(50, 205, 50, 0.3) 0%, transparent 50%);
+  background-image:
+          radial-gradient(circle at 20% 50%, rgba(113, 198, 113, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(144, 238, 144, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(50, 205, 50, 0.3) 0%, transparent 50%);
   filter: blur(100px);
   animation: backgroundShift 20s ease-in-out infinite;
 }
@@ -234,7 +234,7 @@ html, body {
 }
 
 .back-button {
-    position: absolute;
+  position: absolute;
   top: 30px;
   left: 30px;
   bottom: auto;
@@ -267,7 +267,7 @@ html, body {
   width: 100%;
   position: relative;
   overflow: hidden;
-  
+
 }
 
 
@@ -366,7 +366,7 @@ html, body {
     width: 140px;
     height: 140px;
   }
-  
+
   .sections-container {
     transform: scale(0.85);
   }
@@ -376,11 +376,11 @@ html, body {
   .portfolio-title {
     font-size: 2rem;
   }
-  
+
   .portfolio-subtitle {
     font-size: 1rem;
   }
-  
+
   .sections-container {
     position: static;
     display: grid;
@@ -389,45 +389,45 @@ html, body {
     padding: 80px 20px 120px;
     transform: none;
   }
-  
+
   .section-card {
     position: static;
     width: 100%;
     height: 140px;
     transform: none !important;
   }
-  
+
   .center-profile {
     display: none;
   }
-  
+
   .nav-button {
     bottom: 20px;
     padding: 10px 20px;
     font-size: 0.85rem;
   }
-  
+
   .back-button {
     left: 20px;
   }
-  
+
   .edit-button {
     right: 20px;
   }
-  
+
   .modal-content {
     margin: 20px;
     max-height: calc(100vh - 40px);
   }
-  
+
   .modal-header {
     padding: 24px 24px 16px;
   }
-  
+
   .modal-header h2 {
     font-size: 1.5rem;
   }
-  
+
   .modal-body {
     padding: 24px;
   }
@@ -437,20 +437,20 @@ html, body {
   .portfolio-title {
     font-size: 1.5rem;
   }
-  
+
   .portfolio-subtitle {
     font-size: 0.9rem;
   }
-  
+
   .sections-container {
     grid-template-columns: 1fr;
     padding: 60px 16px 100px;
   }
-  
+
   .nav-button span {
     display: none;
   }
-  
+
   .nav-button {
     width: 48px;
     height: 48px;
@@ -471,10 +471,10 @@ html, body {
 
 .loading {
   background: linear-gradient(
-    90deg,
-    rgba(113, 198, 113, 0.05) 25%,
-    rgba(113, 198, 113, 0.1) 50%,
-    rgba(113, 198, 113, 0.05) 75%
+          90deg,
+          rgba(113, 198, 113, 0.05) 25%,
+          rgba(113, 198, 113, 0.1) 50%,
+          rgba(113, 198, 113, 0.05) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
@@ -502,66 +502,66 @@ html, body {
     background: #f0f8f0;
     color: #1a3d1a;
   }
-  
+
   .home-container {
     background: radial-gradient(ellipse at center, #ffffff 0%, #f0f8f0 100%);
   }
-  
+
   .animated-bg {
-    background-image: 
-      radial-gradient(circle at 20% 50%, rgba(113, 198, 113, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(144, 238, 144, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(50, 205, 50, 0.2) 0%, transparent 50%);
+    background-image:
+            radial-gradient(circle at 20% 50%, rgba(113, 198, 113, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(144, 238, 144, 0.2) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(50, 205, 50, 0.2) 0%, transparent 50%);
   }
-  
+
   .section-card {
     background: rgba(0, 0, 0, 0.02);
     border-color: rgba(26, 61, 26, 0.1);
   }
-  
+
   .section-card:hover {
     background: rgba(0, 0, 0, 0.04);
     border-color: rgba(26, 61, 26, 0.2);
   }
-  
+
   .section-icon,
   .section-title {
     color: #2e4d1c;
   }
-  
+
   .section-card:hover .section-icon,
   .section-card:hover .section-title {
     color: #1a3d1a;
   }
-  
+
   .modal-content {
     background: #ffffff;
     border-color: rgba(26, 61, 26, 0.1);
   }
-  
+
   .modal-header h2 {
     color: #1a3d1a;
   }
-  
+
   .modal-body {
     color: rgba(26, 61, 26, 0.9);
   }
-  
+
   .nav-button {
     background: rgba(0, 0, 0, 0.02);
     border-color: rgba(26, 61, 26, 0.1);
     color: #2e4d1c;
   }
-  
+
   .nav-button:hover {
     background: rgba(0, 0, 0, 0.04);
     color: #1a3d1a;
   }
-  
+
   .portfolio-title {
     background: linear-gradient(to right, #2e4d1c, #486d29);
   }
-  
+
   .portfolio-subtitle {
     color: #5a8736;
   }
