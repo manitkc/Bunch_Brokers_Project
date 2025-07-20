@@ -520,3 +520,122 @@ body {
   border-radius: 4px;
   border: 1px solid #2e4d1c;
 }
+
+.pixel-button {
+  background-color: #486d29;
+  color: white;
+  border: 2px solid #2e4d1c;
+  font-size: 8px;
+  padding: 8px 16px;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 0;
+  display: inline-block;
+  min-width: 120px;
+  max-width: 200px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pixel-button:hover {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.pixel-button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.pixel-button.active {
+  background-color: #2e4d1c;
+  box-shadow: inset 2px 2px 0 #000;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.job-filters {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.apply-button {
+  margin-top: 12px;
+  background-color: #a2352d;
+  border-color: #6a1f1a;
+  width: 100%;
+  max-width: 100%;
+}
+
+.apply-button:hover {
+  background-color: #c74139;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.action-buttons .pixel-button {
+  flex: 0 1 auto;
+  min-width: 150px;
+}
+
+.cancel-application-button {
+  background-color: #cc5500;
+  border-color: #994400;
+}
+
+.cancel-application-button:hover {
+  background-color: #ee6600;
+}
+
+.accept-button {
+  background-color: #0a7e0a;
+  border-color: #064d06;
+}
+
+.accept-button:hover {
+  background-color: #0c9c0c;
+}
+
+.reject-button {
+  background-color: #cc0000;
+  border-color: #990000;
+}
+
+.reject-button:hover {
+  background-color: #ee0000;
+}
+
+.progress-button {
+  background-color: #666666;
+  border-color: #444444;
+  font-size: 7px;
+}
+
+.progress-button:hover {
+  background-color: #888888;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.popup-buttons .pixel-button {
+  flex: 0 1 auto;
+  min-width: 100px;
+  max-width: 150px;
+}
