@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import supabase from "../SupabaseClient.js";
 import { useNavigate } from 'react-router-dom';
-// import './Registration.css';
 
+import '../Registration/Registration.css';
 
 const RegistrationTwo = () => {
 const navigate = useNavigate();
@@ -131,7 +131,7 @@ const navigate = useNavigate();
                     </div>
                     <div className="card-body">
                         <div className="date-range">
-                            <span>{exp.startDate || "Start Date"} - {exp.endDate || "End Date"}</span>
+                            <span>{exp.start_date || "Start Date"} - {exp.end_date || "End Date"}</span>
                         </div>
                         <p className="job-description">{exp.description || "Job description..."}</p>
                     </div>

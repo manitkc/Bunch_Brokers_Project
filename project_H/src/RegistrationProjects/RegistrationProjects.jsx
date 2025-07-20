@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import supabase from "../SupabaseClient.js";
 import { useNavigate } from 'react-router-dom';
 
+import '../Registration/Registration.css';
+
 const RegistrationProjects = () => {
     const [projects, setProjects] = useState([]);
     const [userId, setUserId] = useState(null);
