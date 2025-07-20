@@ -226,6 +226,24 @@ export default function HomePage({ userId, userData, onBack, returnToSelf }) {
                     <span>Friends</span>
                 </motion.button>
             )}
+            {/* Job button - only show if not viewing other's profile */}
+{/* Job button - only show if not viewing other's profile */}
+{!isViewingOtherProfile && (
+    <motion.button
+        className="job-button"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => navigate('/jobpage')}
+    >
+        <Briefcase size={20} />
+        <span>Jobs</span>
+    </motion.button>
+)}
+
+
 
             {/* Center profile */}
             <motion.div
