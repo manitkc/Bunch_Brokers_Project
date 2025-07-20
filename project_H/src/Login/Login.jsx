@@ -55,14 +55,14 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            
+
             <form onSubmit={handleSubmit}>
                 {error && (
                     <div className="error-message">
                         {error}
                     </div>
                 )}
-                
+
                 <div className="form-group">
                     <label>Username:</label>
                     <input
@@ -75,7 +75,7 @@ export default function Login() {
                         disabled={loading}
                     />
                 </div>
-                
+
                 <div className="form-group">
                     <label>Password:</label>
                     <input
@@ -88,13 +88,19 @@ export default function Login() {
                         disabled={loading}
                     />
                 </div>
-                
-                <button 
-                    type="submit" 
+
+                <button
+                    type="submit"
                     className="pixel-button"
                     disabled={loading}
                 >
                     {loading ? 'Logging in...' : 'Login'}
+                </button>
+                <button
+                    onClick={() =>  navigate('/Registration')}
+                    className="register-button"
+                >
+                    Register
                 </button>
             </form>
         </div>
