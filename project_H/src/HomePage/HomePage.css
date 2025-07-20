@@ -640,3 +640,29 @@ html, body {
   color: #d1e8b5;
 }
 
+.logout-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #dc2626;
+    color: white;
+    border: 2px solid #991b1b;
+    padding: 8px 14px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px #000;
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 3px 3px #000;
+}
+
+.logout-button:active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px #000;
+}

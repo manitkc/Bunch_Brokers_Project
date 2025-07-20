@@ -191,6 +191,16 @@ export default function HomePage({ userId, userData, onBack, returnToSelf }) {
 
     return (
         <div className="home-container">
+            <button
+    className="logout-button"
+    onClick={async () => {
+        await supabase.auth.signOut();
+        navigate('/');
+    }}
+>
+    Logout
+</button>
+
             {/* Animated background */}
             <div className="animated-bg" />
 
