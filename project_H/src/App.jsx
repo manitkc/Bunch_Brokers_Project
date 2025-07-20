@@ -9,6 +9,7 @@ import JobPage from "./JobPage/JobPage.jsx";
 import Friends from './Friends/Friends.jsx';
 import ProfilePage from './ProfilePage/ProfilePage.jsx';
 import supabase from "./SupabaseClient.js";
+import Registration from "./Registration/Registration.jsx";
 function App() {
 
     const [userId, setUserId] = useState(null);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/JobPage" element={<JobPage />} />
         <Route path="/Friends" element={<Friends />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
+        <Route path="/Registration" element={<Registration />} />
       </Routes>
     </div>
 
