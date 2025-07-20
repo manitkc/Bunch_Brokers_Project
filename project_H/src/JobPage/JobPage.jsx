@@ -1,5 +1,6 @@
                 import React, { useState } from "react";
 import "./JobPage.css";
+import { ArrowLeft } from "lucide-react"; // Add this to your imports if not already there
 
 // Mock job data
 const jobs = [
@@ -182,6 +183,14 @@ export default function JobPage() {
           )}
         </div>
       </div>
+      {/* Back button */}
+<button 
+  className="pixel-button back-to-home"
+  onClick={() => window.location.href = '/homepage'}
+>
+  <ArrowLeft size={16} />
+  <span>BACK</span>
+</button>
 
       <div className="job-content">
         {view === "jobs" ? (

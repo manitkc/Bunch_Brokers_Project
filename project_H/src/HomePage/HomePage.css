@@ -641,25 +641,3 @@ html, body {
   color: #d1e8b5;
 }
 
-/* Responsive adjustment */
-@media (max-width: 768px) {
-  .job-button {
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .job-button span {
-    display: none;
-  }
-  
-  .job-button {
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    justify-content: center;
-  }
-}
