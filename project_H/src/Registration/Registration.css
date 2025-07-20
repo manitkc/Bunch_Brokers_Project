@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   color: #2e4d1c;
+  height:auto;
 }
 
 .form-title {
@@ -48,6 +49,7 @@ body {
   background: #d1e8b5;
   font-family: 'Press Start 2P', monospace;
   box-sizing: border-box;
+  color:black;
 }
 
 .registration-form button {

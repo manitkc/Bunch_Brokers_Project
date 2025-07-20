@@ -183,6 +183,7 @@ const navigate = useNavigate();
                     ></textarea>
                 </div>
                     <button type="submit">Add Experience</button>
+                <button onClick={() => navigate('/RegistrationEducation')} className="next-step-button">Next Step</button>
                 </form>
             </div>
     );

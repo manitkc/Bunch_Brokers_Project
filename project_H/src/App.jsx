@@ -10,6 +10,12 @@ import Friends from './Friends/Friends.jsx';
 import ProfilePage from './ProfilePage/ProfilePage.jsx';
 import supabase from "./SupabaseClient.js";
 import Registration from "./Registration/Registration.jsx";
+import RegistrationSkills from "./RegistrationSkills/RegistrationSkills.jsx";
+import RegistrationProjects from "./RegistrationProjects/RegistrationProjects.jsx";
+import RegistrationAchievements from "./RegistrationAchievements/RegistrationAchievements.jsx";
+import RegistrationTwo from "./RegistrationTwo/RegistrationTwo.jsx";
+import RegistrationEducation from "./RegistrationEducation/RegistrationEducation.jsx";
+
 function App() {
 
     const [userId, setUserId] = useState(null);
@@ -30,6 +36,11 @@ function App() {
         <Route path="/Friends" element={<Friends />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
         <Route path="/Registration" element={<Registration />} />
+        <Route path="/RegistrationSkills" element={<RegistrationSkills />} />
+        <Route path="/RegistrationProjects" element={<RegistrationProjects />} />
+        <Route path="/RegistrationAchievements" element={<RegistrationAchievements />} />
+        <Route path="/RegistrationTwo" element={<RegistrationTwo />} />
+        <Route path="/RegistrationEducation" element={<RegistrationEducation />} />
       </Routes>
     </div>
 

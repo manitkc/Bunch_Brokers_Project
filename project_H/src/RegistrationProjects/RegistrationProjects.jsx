@@ -79,7 +79,6 @@ const RegistrationProjects = () => {
             {/* Projects List */}
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-4">Your Projects</h2>
-                {projects.length > 0 ? (
                     <div className="space-y-4">
                         {projects.map((project) => (
                             <div key={project.id} className="border p-4 rounded-lg">
@@ -93,9 +92,6 @@ const RegistrationProjects = () => {
                             </div>
                         ))}
                     </div>
-                ) : (
-                    <p className="text-gray-500">No projects found.</p>
-                )}
             </div>
 
             {/* Add Project Form */}
@@ -146,7 +142,7 @@ const RegistrationProjects = () => {
                         {isLoading ? 'Adding...' : 'Add Project'}
                     </button>
                 </form>
-                <button onClick={() => navigate('NextStep')}>Next Step</button>
+                <button onClick={() => navigate('/HomePage')}>Next Step</button>
             </div>
         </div>
     );
