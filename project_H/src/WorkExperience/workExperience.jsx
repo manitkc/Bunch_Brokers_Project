@@ -1,6 +1,7 @@
 import './workExperience.css'
 
 export function WorkExperience({data}) {
+  console.log(data);
   return (
       <div className="workExperience_total">
         {data.map((work, index) => (
