@@ -68,13 +68,13 @@ export default function Friends() {
             const { data: connections, error: connectionsError } = await supabase
                 .from('connections')
                 .select('*')
-                .or(`user_id_one.eq.${currentUserProfile.user_id},user_id_two.eq.${currentUserProfile.user_id}`);
+                .or(`user_id_one.eq.${currentUser.id},user_id_two.eq.${currentUser.id}`);
 
             if (connectionsError) throw connectionsError;
 
-            // Get friend profile user_ids
+            // Get friend user_ids
             const friendUserIds = connections.map(conn =>
-                conn.user_id_one === currentUserProfile.user_id ? conn.user_id_two : conn.user_id_one
+                conn.user_id_one === currentUser.id ? conn.user_id_two : conn.user_id_one
             );
 
             if (friendUserIds.length === 0) {
@@ -99,7 +99,7 @@ export default function Friends() {
             // Format friends data
             const formattedFriends = profilesData.map(friend => ({
                 ...friend,
-                id: friend.user_id, // Use user_id as the main id for consistency
+                id: friend.user_id,
                 lastSeen: friend.status === 'online' ? 'Online now' : formatLastSeen(friend.last_seen)
             }));
 
@@ -119,7 +119,7 @@ export default function Friends() {
             const { data: requests, error } = await supabase
                 .from('friend_requests')
                 .select('*')
-                .eq('receiver_id', currentUserProfile.user_id)
+                .eq('receiver_id', currentUser.id)
                 .eq('status', 'pending');
 
             if (error) {
@@ -157,7 +157,7 @@ export default function Friends() {
                     status: profile?.status || 'offline',
                     sentTime: formatRequestTime(req.created_at),
                     senderId: req.sender_id,
-                    profileData: profile // Store full profile data for potential use
+                    profileData: profile
                 };
             });
 
@@ -207,11 +207,11 @@ export default function Friends() {
                 return;
             }
 
-            // Create connection between users using their profile user_ids
+            // Create connection between users
             const { error: connectionError } = await supabase
                 .from('connections')
                 .insert({
-                    user_id_one: currentUserProfile.user_id,
+                    user_id_one: currentUser.id,
                     user_id_two: senderId
                 });
 
@@ -248,11 +248,11 @@ export default function Friends() {
 
     const handleRemoveFriend = async (friendUserId) => {
         try {
-            // Remove connection using profile user_ids
+            // Remove connection
             const { error } = await supabase
                 .from('connections')
                 .delete()
-                .or(`and(user_id_one.eq.${currentUserProfile.user_id},user_id_two.eq.${friendUserId}),and(user_id_one.eq.${friendUserId},user_id_two.eq.${currentUserProfile.user_id})`);
+                .or(`and(user_id_one.eq.${currentUser.id},user_id_two.eq.${friendUserId}),and(user_id_one.eq.${friendUserId},user_id_two.eq.${currentUser.id})`);
 
             if (error) {
                 console.error('Error removing friend:', error);
@@ -274,7 +274,7 @@ export default function Friends() {
     };
 
     const searchForUsers = async (username) => {
-        if (!username.trim() || !currentUserProfile) {
+        if (!username.trim() || !currentUser) {
             setSearchResults([]);
             return;
         }
@@ -286,7 +286,7 @@ export default function Friends() {
                 .from('profiles')
                 .select('*')
                 .ilike('username', `%${username}%`)
-                .neq('user_id', currentUserProfile.user_id)
+                .neq('user_id', currentUser.id)
                 .limit(10);
 
             if (error) {
@@ -303,7 +303,7 @@ export default function Friends() {
             const { data: outgoingRequests, error: outgoingError } = await supabase
                 .from('friend_requests')
                 .select('receiver_id')
-                .eq('sender_id', currentUserProfile.user_id)
+                .eq('sender_id', currentUser.id)
                 .in('status', ['pending', 'accepted']);
 
             const outgoingUserIds = outgoingError ? [] : outgoingRequests.map(r => r.receiver_id);
@@ -328,7 +328,7 @@ export default function Friends() {
             const { error } = await supabase
                 .from('friend_requests')
                 .insert({
-                    sender_id: currentUserProfile.user_id,
+                    sender_id: currentUser.id,
                     receiver_id: targetUserId,
                     status: 'pending'
                 });
@@ -358,7 +358,14 @@ export default function Friends() {
 
     // If viewing a profile, render HomePage component
     if (selectedProfile) {
-        return <HomePage userData={selectedProfile} onBack={handleBackToFriends} />;
+        return (
+            <HomePage
+                userId={selectedProfile.user_id}
+                userData={selectedProfile}
+                onBack={handleBackToFriends}
+                returnToSelf={true}
+            />
+        );
     }
 
     if (loading) {
