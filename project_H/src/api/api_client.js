@@ -71,7 +71,7 @@ export async function fetchSkillsInformation(userId) {
         .from('skills')
         .select('*')
         .eq('user_id', userId)
-
+    
     return data;
 }
 
