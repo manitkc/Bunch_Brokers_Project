@@ -484,3 +484,26 @@ body {
         padding: 5px 10px;
     }
 }
+.search-bar-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar-wrapper .friends-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar-wrapper .pixel-input {
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-bar-wrapper .back-to-home {
+    position: absolute;
+    left: 0;
+}

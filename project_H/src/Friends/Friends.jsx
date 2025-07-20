@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import supabase from "../SupabaseClient.js";
 import HomePage from "../HomePage/HomePage.jsx";
 import './friends.css';
+import { ArrowLeft } from "lucide-react"; // Importing the back arrow icon
 
 export default function Friends() {
     const [activeTab, setActiveTab] = useState('all');
@@ -381,6 +382,7 @@ export default function Friends() {
     return (
         <div className="friends-page">
             <div className="friends-header">
+                
                 <h2>Friends Network</h2>
                 <div className="header-actions">
                     <button
@@ -455,15 +457,25 @@ export default function Friends() {
                 </div>
             )}
 
-            <div className="friends-search">
-                <input
-                    type="text"
-                    placeholder="Search friends..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pixel-input"
-                />
-            </div>
+ <div className="search-bar-wrapper">
+    <button 
+        className="pixel-button back-to-home"
+        onClick={() => window.location.href = '/homepage'}
+    >
+        <ArrowLeft size={16} />
+        <span>BACK</span>
+    </button>
+
+    <div className="friends-search">
+        <input
+            type="text"
+            placeholder="Search friends..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pixel-input"
+        />
+    </div>
+</div>
 
             <div className="friends-tabs">
                 <button
