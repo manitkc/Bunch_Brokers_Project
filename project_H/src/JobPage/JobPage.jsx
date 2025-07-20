@@ -1,81 +1,68 @@
-
-import React, { useState } from "react";
+                import React, { useState } from "react";
 import "./JobPage.css";
 
 // Mock job data
 const jobs = [
   {
     id: 1,
-    title: "Cloud Infrastructure Intern",
-    description: "Assist in provisioning and managing cloud-native environments.",
-    fitScore: 88, // High compatibility
-    applicants: 8,
+    title: "Junior Pixel Engineer",
+    description: "Maintain retro UI components and fix pixel misalignments.",
+    fitScore: 88,
+    applicants: 12,
     requiredSkills: [
-      { name: "Terraform", level: 4 },
-      { name: "Docker", level: 3 },
-      { name: "Kubernetes", level: 3 }
+      { name: "Pixel Art", level: 3 },
+      { name: "CSS", level: 2 },
+      { name: "JavaScript", level: 2 }
     ]
   },
   {
     id: 2,
-    title: "Backend Developer (Node.js)",
-    description: "Maintain server-side logic and REST APIs using Node.js and PostgreSQL.",
-    fitScore: 72, // Medium-high
-    applicants: 16,
+    title: "Quest System Designer",
+    description: "Design quest progression logic for adventure games.",
+    fitScore: 73,
+    applicants: 25,
     requiredSkills: [
-      { name: "Node.js", level: 3 },
-      { name: "PostgreSQL", level: 4 },
-      { name: "SQL", level: 3 }
+      { name: "Game Design", level: 4 },
+      { name: "Storytelling", level: 3 },
+      { name: "Logic Systems", level: 3 }
     ]
   },
   {
     id: 3,
-    title: "Frontend Intern (React)",
-    description: "Help build interactive UIs using React and TypeScript.",
-    fitScore: 60, // Medium
-    applicants: 25,
+    title: "Boss AI Programmer",
+    description: "Implement behavior trees for challenging end-level bosses.",
+    fitScore: 62,
+    applicants: 42,
     requiredSkills: [
-      { name: "React", level: 3 },
-      { name: "TypeScript", level: 3 },
-      { name: "JavaScript", level: 4 }
+      { name: "AI Programming", level: 5 },
+      { name: "C++", level: 4 },
+      { name: "Math", level: 3 }
     ]
   },
   {
     id: 4,
-    title: "Data Analyst Assistant",
-    description: "Write queries and transform data for reporting and dashboards.",
-    fitScore: 80, // High
-    applicants: 11,
+    title: "Retro Shader Developer",
+    description: "Develop CRT-style post-processing effects in WebGL.",
+    fitScore: 91,
+    applicants: 5,
     requiredSkills: [
-      { name: "SQL", level: 5 },
-      { name: "PostgreSQL", level: 5 },
-      { name: "Python", level: 4 }
+      { name: "WebGL", level: 4 },
+      { name: "GLSL", level: 4 },
+      { name: "Graphics Programming", level: 3 }
     ]
   },
   {
     id: 5,
-    title: "DevOps Trainee",
-    description: "Support CI/CD pipelines and container orchestration.",
-    fitScore: 66, // Medium
-    applicants: 19,
+    title: "Dialogue System Architect",
+    description: "Design branching dialogue and emotion trees.",
+    fitScore: 68,
+    applicants: 17,
     requiredSkills: [
-      { name: "Docker", level: 4 },
-      { name: "Kubernetes", level: 4 },
-      { name: "Coding", level: 6 }
+      { name: "System Design", level: 4 },
+      { name: "Narrative Design", level: 3 },
+      { name: "Node-based Tools", level: 2 }
     ]
   },
-  {
-    id: 6,
-    title: "Junior API Engineer",
-    description: "Develop and maintain APIs with modern JS frameworks.",
-    fitScore: 50, // Lower compatibility
-    applicants: 21,
-    requiredSkills: [
-      { name: "JavaScript", level: 4 },
-      { name: "TypeScript", level: 5 },
-      { name: "Node.js", level: 5 }
-    ]
-  }
 ];
 
 // Possible application statuses
@@ -152,7 +139,7 @@ export default function JobPage() {
 
   // Get skill level display
   const getSkillLevel = (level) => {
-    return "★".repeat(level) + "☆".repeat(10 - level);
+    return "★".repeat(level) + "☆".repeat(5 - level);
   };
 
   // Filtered list based on Fit Score
@@ -238,7 +225,8 @@ export default function JobPage() {
             ) : (
               appliedJobs.map((job, index) => (
                 <div key={index} className={`job-card applied-card status-${job.status.toLowerCase()}`}>
-                                    <h3>{job.title}</h3>
+
+                <h3>{job.title}</h3>
                   <p className="description">{job.description}</p>
                   <div className="skills-section">
                     <p className="skills-title">Required Skills:</p>
