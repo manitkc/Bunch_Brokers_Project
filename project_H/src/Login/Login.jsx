@@ -1,55 +1,102 @@
 import React, { useState } from 'react';
-import { createClient } from '@supabase/supabase-js'
 import './Login.css'; 
 import { useNavigate } from 'react-router-dom';
 import supabase from "../SupabaseClient.js";
 
-
 export default function Login() {
     const [form, setForm] = useState({ username: '', password: '' });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+        // Clear error when user starts typing
+        if (error) setError('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        supabase.auth.signInWithPassword({
-            email: form.username,
-            password: form.password
-        }).then(({ data, error }) => {console.log(data, error) })
-        
-        console.log('Login submitted:', form);
-        navigate('/HomePage');
+        setLoading(true);
+        setError('');
+
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: form.username,
+                password: form.password
+            });
+
+            if (error) {
+                setError(error.message);
+                console.error('Login error:', error);
+            } else {
+                console.log('Login successful:', data);
+                navigate('/HomePage');
+            }
+        } catch (err) {
+            setError('An unexpected error occurred');
+            console.error('Unexpected error:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="login-container">
-            <form onSubmit={handleSubmit} className="registration-form">
-            <h2 class="form-title">Login</h2>
-                <div>
+            <div className="login-header">
+                <h1 className="app-title networked-effect">NETWORKED</h1>
+                <div className="pixel-subtitle">
+                    <div className="subtitle-content">
+                        <span>ASPIRE</span>
+                        <span className="bullet">•</span>
+                        <span>ACHIEVE</span>
+                        <span className="bullet">•</span>
+                        <span className="highlight">AURAFARM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <form onSubmit={handleSubmit}>
+                {error && (
+                    <div className="error-message">
+                        {error}
+                    </div>
+                )}
+                
+                <div className="form-group">
                     <label>Username:</label>
                     <input
-                        type="text"
+                        type="email"
                         name="username"
                         value={form.username}
                         onChange={handleChange}
+                        placeholder="Enter your email"
                         required
+                        disabled={loading}
                     />
                 </div>
-                <div>
+                
+                <div className="form-group">
                     <label>Password:</label>
                     <input
                         type="password"
                         name="password"
                         value={form.password}
                         onChange={handleChange}
+                        placeholder="Enter your password"
                         required
+                        disabled={loading}
                     />
                 </div>
-                <button type="submit">Login</button>
+                
+                <button 
+                    type="submit" 
+                    className="pixel-button"
+                    disabled={loading}
+                >
+                    {loading ? 'Logging in...' : 'Login'}
+                </button>
             </form>
         </div>
     );
-};
+}

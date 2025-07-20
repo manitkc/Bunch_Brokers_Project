@@ -1,0 +1,182 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.app-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: #2d5016;
+    text-shadow: 2px 2px 0 #486d29;
+    margin-bottom: 10px;
+}
+
+.networked-effect {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 4px;
+}
+
+/* Keep all your existing pixel-subtitle styles exactly as they are */
+.pixel-subtitle {
+  font-size: 12px;
+  color: #486d29;
+  margin: 15px 0; 
+  letter-spacing: 4px; 
+  text-transform: uppercase;
+  position: relative;
+  animation: subtitleGlow 2s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px; 
+  width: 100%;
+  padding: 0 20px; 
+}
+
+.pixel-subtitle::before,
+.pixel-subtitle::after {
+  content: "";
+  display: block;
+  width: 40px; 
+  height: 2px;
+  background: #a2352d;
+  animation: connectorPulse 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.subtitle-content {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+.bullet {
+  color: #a2352d;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #a2352d;
+  text-shadow: 1px 1px 0 #6a1f1a;
+  position: relative;
+  margin-left: 3px; 
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a2352d, transparent);
+  bottom: -2px;
+  left: 0;
+}
+
+@keyframes subtitleGlow {
+  from {
+    text-shadow: 0 0 2px #b7d89c;
+  }
+  to {
+    text-shadow: 0 0 5px #e5f4cc;
+  }
+}
+
+@keyframes connectorPulse {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* Form styles to center the login form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.form-group label {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #2d5016;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.form-group input {
+    padding: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    border: 2px solid #486d29;
+    background-color: #f0f8e8;
+    color: #2d5016;
+    border-radius: 4px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #a2352d;
+    box-shadow: 0 0 5px rgba(162, 53, 45, 0.3);
+}
+
+.pixel-button {
+    padding: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: bold;
+    background-color: #486d29;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.pixel-button:hover:not(:disabled) {
+    background-color: #2d5016;
+    transform: translateY(-1px);
+}
+
+.pixel-button:disabled {
+    background-color: #8a9a7a;
+    cursor: not-allowed;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #a2352d;
+    padding: 10px 15px;
+    border: 1px solid #a2352d;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
