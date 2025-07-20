@@ -30,8 +30,8 @@
 }
 
 .individual_experience h4.description {
-    color: #a2352d; / Using the red from your buttons /
-font-size: 10px;
+    color: #a2352d; 
+    font-size: 10px;
     margin: 0 0 6px 0;
     font-style: italic;
 }

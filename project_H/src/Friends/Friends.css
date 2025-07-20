@@ -44,12 +44,107 @@ body {
     margin: 0;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .friend-count {
     font-size: 10px;
     color: #486d29;
     padding: 4px 8px;
     background: #f3fce2;
     border: 2px solid #486d29;
+}
+
+.add-friend-btn {
+    background-color: #16a34a;
+    border-color: #15803d;
+}
+
+.add-friend-btn:hover {
+    background-color: #22c55e;
+}
+
+.add-friend-btn.active {
+    background-color: #dc2626;
+    border-color: #991b1b;
+}
+
+.add-friend-btn.active:hover {
+    background-color: #ef4444;
+}
+
+.add-friend-section {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: rgba(243, 252, 226, 0.5);
+    border: 2px solid #486d29;
+    border-radius: 8px;
+}
+
+.add-friend-section h3 {
+    font-size: 12px;
+    color: #2e4d1c;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #486d29;
+}
+
+.add-friend-form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.add-friend-form .pixel-input {
+    max-width: 250px;
+    margin: 0;
+}
+
+.searching-state {
+    text-align: center;
+    padding: 16px;
+    color: #486d29;
+}
+
+.searching-state p {
+    font-size: 10px;
+    margin: 0;
+}
+
+.search-results {
+    margin-top: 16px;
+}
+
+.search-results h4 {
+    font-size: 11px;
+    color: #2e4d1c;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #486d29;
+}
+
+.friend-card.search-result {
+    border-color: #16a34a;
+    background: rgba(22, 163, 74, 0.1);
+}
+
+.friend-card.search-result:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(22, 163, 74, 0.3);
+}
+
+.cancel-button {
+    background-color: #6b7280;
+    border-color: #4b5563;
+}
+
+.cancel-button:hover {
+    background-color: #9ca3af;
 }
 
 .friends-search {
@@ -139,11 +234,6 @@ body {
     box-shadow: 0 4px 8px rgba(70, 109, 41, 0.3);
 }
 
-.friend-card.suggested {
-    border-color: #7ba05b;
-    background: rgba(243, 252, 226, 0.6);
-}
-
 .friend-card.request {
     border-color: #b7d89c;
     background: rgba(183, 216, 156, 0.3);
@@ -215,15 +305,6 @@ body {
     color: #7ba05b;
 }
 
-.suggestion-reason {
-    color: #486d29;
-    font-style: italic;
-}
-
-.mutual-friends {
-    color: #7ba05b;
-}
-
 .friend-actions {
     display: flex;
     gap: 8px;
@@ -253,12 +334,12 @@ body {
     box-shadow: 1px 1px #000;
 }
 
-.message-button {
+.profile-button {
     background-color: #2563eb;
     border-color: #1e40af;
 }
 
-.message-button:hover {
+.profile-button:hover {
     background-color: #3b82f6;
 }
 
@@ -269,15 +350,6 @@ body {
 
 .remove-button:hover {
     background-color: #ef4444;
-}
-
-.add-button {
-    background-color: #16a34a;
-    border-color: #15803d;
-}
-
-.add-button:hover {
-    background-color: #22c55e;
 }
 
 .invite-button {
@@ -318,6 +390,17 @@ body {
     margin: 0;
 }
 
+.loading-state {
+    text-align: center;
+    padding: 32px;
+    color: #486d29;
+}
+
+.loading-state p {
+    font-size: 12px;
+    margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .friends-page {
@@ -330,6 +413,21 @@ body {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .add-friend-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-friend-form .pixel-input {
+        max-width: 100%;
     }
 
     .friends-tabs {
