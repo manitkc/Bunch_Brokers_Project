@@ -5,10 +5,11 @@ import './Registration.css';
 
 
 const Registration = () => {
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         email: "",
+        username: "",
         firstname: "",
         lastname: "",
         password: "",
@@ -41,6 +42,7 @@ const navigate = useNavigate();
                 supabase.from('profiles').insert([
                     {
                         user_id: data.user.id,
+                        username: form.username,
                         first_name: form.firstname,
                         last_name: form.lastname,
                         dob: form.dob,
@@ -60,73 +62,83 @@ const navigate = useNavigate();
     };
 
     return (
- <form class="registration-form">
-        <h2 class="form-title">REGISTRATION</h2>
-        
-        <div class="form-row">
-            <label>Email</label>
-            <input
-                type="email"
-                name="email"
-                required
-            />
-        </div>
+        <form class="registration-form">
+            <h2 class="form-title">REGISTRATION</h2>
 
-        <div class="form-row">
-            <label>First Name</label>
-            <input
-                type="text"
-                name="firstname"
-                required
-            />
-        </div>
+            <div class="form-row">
+                <label>Email</label>
+                <input
+                    type="email"
+                    name="email"
+                    required
+                />
+            </div>
 
-        <div class="form-row">
-            <label>Last Name</label>
-            <input
-                type="text"
-                name="lastname"
-                required
-            />
-        </div>
+            <div class="form-row">
+                <label>Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    required
+                    onChange={handleChange}
+                />
+            </div>
 
-        <div class="form-row">
-            <label>Password</label>
-            <input
-                type="password"
-                name="password"
-                required
-            />
-        </div>
+            <div class="form-row">
+                <label>First Name</label>
+                <input
+                    type="text"
+                    name="firstname"
+                    required
+                />
+            </div>
 
-        <div class="form-row">
-            <label>Date of Birth:</label>
-            <input
-                type="text"
-                name="dob"
-                placeholder="YYYY-MM-DD"
-                required
-            />
-        </div>
+            <div class="form-row">
+                <label>Last Name</label>
+                <input
+                    type="text"
+                    name="lastname"
+                    required
+                />
+            </div>
 
-        <div class="form-row">
-            <label>About Me:</label>
-            <textarea
-                name="aboutMe"
-                rows="4"
-            ></textarea>
-        </div>
+            <div class="form-row">
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    required
+                />
+            </div>
 
-        <div class="form-row">
-            <label>Profile URL:</label>
-            <input
-                type="text"
-                name="profile_url"
-            />
-        </div>
+            <div class="form-row">
+                <label>Date of Birth:</label>
+                <input
+                    type="text"
+                    name="dob"
+                    placeholder="YYYY-MM-DD"
+                    required
+                />
+            </div>
 
-        <button type="submit">Register</button>
-    </form>
+            <div class="form-row">
+                <label>About Me:</label>
+                <textarea
+                    name="aboutMe"
+                    rows="4"
+                ></textarea>
+            </div>
+
+            <div class="form-row">
+                <label>Profile URL:</label>
+                <input
+                    type="text"
+                    name="profile_url"
+                />
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
     );
 };
 
