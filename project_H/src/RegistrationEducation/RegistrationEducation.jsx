@@ -83,7 +83,6 @@ const RegistrationEducation = () => {
             {/* Education List */}
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-4">Your Education</h2>
-                {educations.length > 0 ? (
                     <div className="space-y-4">
                         {educations.map((education) => (
                             <div key={education.id} className="border p-4 rounded-lg">
@@ -98,9 +97,6 @@ const RegistrationEducation = () => {
                             </div>
                         ))}
                     </div>
-                ) : (
-                    <p className="text-gray-500">No education entries found.</p>
-                )}
             </div>
 
             {/* Add Education Form */}
@@ -176,8 +172,8 @@ const RegistrationEducation = () => {
                     >
                         {isLoading ? 'Adding...' : 'Add Education'}
                     </button>
-                </form>
                 <button onClick={() => navigate('/RegistrationSkills')}>Next Step</button>
+                </form>
             </div>
         </div>
     );

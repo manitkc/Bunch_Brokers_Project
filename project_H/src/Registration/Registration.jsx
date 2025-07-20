@@ -56,13 +56,13 @@ const Registration = () => {
                         console.log("Profile created successfully:", data);
                     }
                 })
-                navigate('/HomePage');
+                navigate('/RegistrationTwo');
             }
         });
     };
 
     return (
-        <form class="registration-form">
+        <form class="registration-form" onSubmit={handleSubmit}>
             <h2 class="form-title">REGISTRATION</h2>
 
             <div class="form-row">

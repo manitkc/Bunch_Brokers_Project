@@ -72,12 +72,11 @@ const RegistrationSkills = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-6">Skills Management</h1>
+            <h1 className="text-2xl font-bold mb-6">Skills</h1>
             
             {/* Skills List */}
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-4">Your Skills</h2>
-                {skills.length > 0 ? (
                     <div className="space-y-4">
                         {skills.map((skill) => (
                             <div key={skill.id} className="border p-4 rounded-lg">
@@ -86,9 +85,6 @@ const RegistrationSkills = () => {
                             </div>
                         ))}
                     </div>
-                ) : (
-                    <p className="text-gray-500">No skills found.</p>
-                )}
             </div>
 
             {/* Add Skill Form */}
@@ -128,7 +124,7 @@ const RegistrationSkills = () => {
                         {isLoading ? 'Adding...' : 'Add Skill'}
                     </button>
                 </form>
-                <button onClick={() => navigate('NextStep')}>Next Step</button>
+                <button onClick={() => navigate('/RegistrationProjects')}>Next Step</button>
             </div>
         </div>
     );
